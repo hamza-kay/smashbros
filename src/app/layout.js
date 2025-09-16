@@ -19,7 +19,7 @@ const bebas = Bebas_Neue({
 });
 
 export const metadata = {
-  title: "Grill & Destroy",
+  title: "Smash Bro's Kitchen",
 };
 
 export const viewport = {

@@ -248,16 +248,19 @@ selection.selectedAddons.forEach((addonName) => {
 
       >
         <div className="flex-1 overflow-y-auto">
-      <div className="relative w-full h-72 md:h-96 overflow-hidden bg-gray-100">
+<div className="relative w-full h-72 md:h-96 overflow-hidden bg-[var(--color-card-bg)] flex items-center justify-center">
   {(!dealItem.image_url || imgError) ? (
-    <Image
-      src="https://cdn.grubify.co.uk/popularpizza/utensil.webp"
-      alt="Fallback image"
-      fill
-      className="object-contain p-6 grayscale opacity-50"
-      unoptimized
-     
-    />
+    <span
+      className="material-icons"
+      style={{
+        color: "var(--color-muted)",
+        opacity: 0.6,
+        fontSize: "7rem",
+        lineHeight: 1,
+      }}
+    >
+      restaurant
+    </span>
   ) : (
     <Image
       src={dealItem.image_url}
@@ -272,19 +275,20 @@ selection.selectedAddons.forEach((addonName) => {
 </div>
 
 
+
           <div className="p-6">
-            <h1 className="text-xl font-bold text-gray-900">
+           <h1 className="text-xl font-bold text-[var(--color-light)]">
               {dealItem.name}
             </h1>
 
             {dealItem.price && (
-              <p className="mt-2 text-lg font-semibold text-gray-900">
+             <p className="mt-2 text-lg font-semibold text-[var(--color-accent)]">
                 £{Number(dealItem.price).toFixed(2)}
               </p>
             )}
 
             {dealItem.description && (
-              <p className="mt-4 text-sm text-gray-700 whitespace-pre-line">
+              <p className="mt-4 text-sm text-[var(--color-muted)] whitespace-pre-line">
                 {dealItem.description}
               </p>
             )}
@@ -302,13 +306,13 @@ const matchingItems = fullMenuItems.filter((item) =>
 
   return (
     <div key={req.key} className="mt-8">
-      <h4 className="text-sm font-semibold text-gray-700 mb-2">
+      <h4 className="text-sm font-semibold text-[var(--color-light)] mb-2">
         {req.displayName}
       </h4>
 
       {/* If only one item, show it preselected */}
       {matchingItems.length === 1 ? (
-        <p className="text-sm text-gray-700 mb-4">
+        <p className="text-sm text-[var(--color-light)] mb-4">
           {matchingItems[0].name}
         </p>
       ) : (
@@ -322,9 +326,9 @@ const matchingItems = fullMenuItems.filter((item) =>
                 Number(e.target.value)
               )
             }
-            className="w-full border rounded px-3 py-2 text-sm"
+            className="w-full border rounded px-3 py-2 text-sm text-[var(--color-muted)]"
           >
-            <option value="">Select {req.name}</option>
+            <option className="text-[var(--color-muted)]" value="">Select {req.name}</option>
             {matchingItems.map((item) => (
               <option key={item.id} value={item.id}>
                 {item.name}
@@ -338,13 +342,13 @@ const matchingItems = fullMenuItems.filter((item) =>
       {selectedItem &&
         selectedItem.variation &&
         Object.keys(selectedItem.variation).length > 0 && (
-          <div className="divide-y divide-gray-200 border rounded">
+          <div className="divide-y divide-[var(--color-card-border)] border border-[var(--color-card-border)]  border rounded">
             {Object.keys(selectedItem.variation).map((varKey) => {
               const varPrice = selectedItem.variation?.[varKey]?.prices?.[req.size] || 0;
               return (
                 <label
                   key={varKey}
-                  className="flex justify-between items-center text-sm py-3 px-3 cursor-pointer hover:bg-gray-50 transition"
+                  className="flex justify-between items-center text-sm py-3 px-3 cursor-pointer hover:bg-[var(--color-card-border)] transition"
                 >
                   <div className="flex items-center gap-3">
                     <input
@@ -361,13 +365,13 @@ const matchingItems = fullMenuItems.filter((item) =>
                           varKey
                         )
                       }
-                      className="accent-accent w-5 h-5 border-gray-300 rounded"
+                      className="accent-[var(--color-accent)] w-5 h-5 border-[var(--color-card-border)] rounded"
                     />
-                    <span className="text-gray-900">
+                    <span className="text-[var(--color-light)]">
                       {selectedItem.variation[varKey].name}
                     </span>
                   </div>
-                  <span className="text-gray-500 text-sm">
+                  <span className="text-[var(--color-muted)] text-sm">
                     {varPrice > 0
                       ? `+£${varPrice.toFixed(2)}`
                       : "+£0.00"}
@@ -388,11 +392,11 @@ const matchingItems = fullMenuItems.filter((item) =>
         selectedItem.addons &&
         Object.keys(selectedItem.addons).length > 0 && (
           <div className="mt-8">
-            <h4 className="text-sm font-semibold text-gray-700 mb-2">
+            <h4 className="text-sm font-semibold text-[var(--color-light)] mb-2">
               Add-ons
             </h4>
           
-            <div className="divide-y divide-gray-200 border rounded">
+            <div className="divide-y divide-[var(--color-card-border)] border border-[var(--color-card-border)]  border rounded">
               {Object.keys(selectedItem.addons).map((addonName) => {
                   const selectedSize = selections[req.key]?.selectedSize;
                 const addonData = selectedItem.addons[addonName];
@@ -406,7 +410,7 @@ const matchingItems = fullMenuItems.filter((item) =>
                 return (
                   <label
                     key={addonName}
-                    className="flex justify-between items-center text-sm py-3 px-3 cursor-pointer hover:bg-gray-50 transition"
+                    className="flex justify-between items-center text-sm py-3 px-3 cursor-pointer hover:bg-[var(--color-card-border)] transition"
                   >
                     <div className="flex items-center gap-3">
                       <input
@@ -417,13 +421,13 @@ const matchingItems = fullMenuItems.filter((item) =>
                         onChange={() =>
                           toggleAddon(req.key, addonName)
                         }
-                        className="accent-accent w-5 h-5 border-gray-300 rounded"
+                        className="accent-[var(--color-accent)] w-5 h-5 border-[var(--color-card-border)] rounded"
                       />
-                      <span className="text-gray-900">
+                      <span className="text-[var(--color-light)]">
                         {addonName}
                       </span>
                     </div>
-                    <span className="text-gray-500 text-sm">
+                    <span className="text-[var(--color-muted)] text-sm">
                       +£{Number(price || 0).toFixed(2)}
                     </span>
                   </label>
@@ -444,18 +448,18 @@ const matchingItems = fullMenuItems.filter((item) =>
                 <Button
                   size="icon"
                   variant="outline"
-                  className="w-8 h-8 p-0 bg-gray-100 hover:bg-gray-200 text-gray-900 border border-gray-300"
+                  className="w-8 h-8 p-0 bg-[var(--color-card-bg)] hover:bg-[var(--color-card-border)] text-[var(--color-light)] border border-[var(--color-card-border)]"
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
                 >
                   −
                 </Button>
-                <span className="text-base font-semibold w-6 text-center text-gray-900">
+                <span className="text-base font-semibold w-6 text-center text-[var(--color-light)]">
                   {quantity}
                 </span>
                 <Button
                   size="icon"
                   variant="outline"
-                  className="w-8 h-8 p-0 bg-gray-100 hover:bg-gray-200 text-gray-900 border border-gray-300"
+                   className="w-8 h-8 p-0 bg-[var(--color-card-bg)] hover:bg-[var(--color-card-border)] text-[var(--color-light)] border border-[var(--color-card-border)]"
                   onClick={() => setQuantity(quantity + 1)}
                 >
                   +
@@ -469,13 +473,13 @@ const matchingItems = fullMenuItems.filter((item) =>
           <div className="flex items-center justify-between bg-[var(--color-card-bg)] backdrop-blur border-t px-4 py-3">
             <button
               onClick={onClose}
-              className="text-accent hover:text-secondary text-xl font-bold px-3 py-1 rounded-md bg-gray-100 hover:bg-gray-200 transition"
+              className="text-[var(--color-accent)] hover:text-[var(--color-secondary)] text-xl font-bold px-3 py-1 rounded-md bg-[var(--color-card-bg)] hover:bg-[var(--color-card-border)] transition"
             >
               ×
             </button>
             <Button
               onClick={handleAddToCart}
-              className="bg-accent hover:bg-secondary text-white font-semibold flex-grow ml-4 py-3 rounded transition text-base"
+              className="bg-[var(--color-accent)] hover:bg-[var(--color-secondary)] text-white font-semibold flex-grow ml-4 py-3 rounded transition text-base"
             >
               Add to Order £{totalPrice}
             </Button>

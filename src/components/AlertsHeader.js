@@ -90,20 +90,20 @@ return (
           >
             {isRestaurantOpen ? "OPEN" : "CLOSED"}
           </span>
-          <span className="text-gray-500 text-sm">
+          <span className=" text-sm text-[var(--color-muted)]">
             {isRestaurantOpen
               ? `Until ${todayHours?.CloseTime?.slice(0, 5)}`
               : `Opens at ${todayHours?.OpenTime?.slice(0, 5)}`}
           </span>
         </div>
 
-        <p className="mt-4 text-gray-600 text-sm font-medium">
+        <p className="mt-4  text-sm font-medium text-[var(--color-muted)]">
           {restaurant.address}
         </p>
 
-        <div className="mt-4 space-y-3 text-sm text-gray-600">
+        <div className="mt-4 space-y-3 text-sm text-[var(--color-muted)] hover:text-[var(--color-accent)] ">
           {restaurant.phone && (
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 text-[var(--color-muted)] hover:text-[var(--color-accent)]">
               <FaPhone className="w-4 h-4" />
               <span>{restaurant.phone}</span>
             </div>

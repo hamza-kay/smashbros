@@ -19,31 +19,51 @@ export default function MenuItem({ item, onClick }) {
       "
     >
       {/* IMAGE */}
-      <div
-        className="
-          relative shrink-0 bg-[var(--color-card-bg)] overflow-hidden
-          w-24 h-24 rounded-md
-          md:w-full md:h-[200px] md:rounded-none
-        "
-      >
-        <Image
-          src={showFallback ? fallbackUrl : item.image_url}
-          alt={item.name || "Menu item"}
-          fill
-          className={showFallback ? "object-contain p-6 grayscale opacity-50" : "object-cover"}
-          sizes="(max-width: 768px) 96px, (min-width: 768px) 100vw"
-          onError={() => setImgError(true)}
-          priority
-        />
-      </div>
+<div
+  className="
+    relative shrink-0
+    w-24 h-24 rounded-md
+    md:w-full md:h-[200px] md:rounded-none
+    overflow-hidden
+    flex items-center justify-center
+    bg-[var(--color-card-bg)]
+  "
+>
+  {showFallback ? (
+    <span
+      className="material-icons"
+      style={{
+        color: "var(--color-muted)",
+        opacity: 0.6,
+        fontSize: "5rem",   // <- adjust as desired
+        lineHeight: 1,
+      }}
+    >
+      restaurant
+    </span>
+  ) : (
+    <Image
+      src={item.image_url}
+      alt={item.name || "Menu item"}
+      fill
+      className="object-cover"
+      sizes="(max-width: 768px) 96px, (min-width: 768px) 100vw"
+      onError={() => setImgError(true)}
+      priority
+    />
+  )}
+</div>
+
+
+
 
       {/* CONTENT */}
       <div className="flex-1 px-1 md:px-6 md:pt-6 md:pb-6">
-        <h3 className="!font-bold text-gray-800 line-clamp-1 text-base md:text-xl">
+        <h3 className="!font-bold text-[var(--color-light)] line-clamp-1 text-base md:text-xl">
           {item.name}
         </h3>
 
-        <p className="text-gray-600 mt-1 md:mt-2 line-clamp-1 text-xs md:text-sm">
+        <p className="text-[var(--color-muted)] mt-1 md:mt-2 line-clamp-1 text-xs md:text-sm">
           {item.description}
         </p>
 

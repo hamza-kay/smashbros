@@ -129,10 +129,10 @@ const { appId } = useContext(AppIdContext);
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Your Order</CardTitle>
+          <CardTitle className="text-[var(--color-light)]">Your Order</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
-          <p className="text-gray-500">Loading your order...</p>
+          <p className="text-[var(--color-muted)]">Loading your order...</p>
         </CardContent>
       </Card>
     );
@@ -151,7 +151,7 @@ const { appId } = useContext(AppIdContext);
     <>
       <Card className="bg-[var(--color-card-bg)] border border-[var(--color-card-border)]">
         <CardHeader>
-          <CardTitle>Your Order</CardTitle>
+          <CardTitle className="text-[var(--color-light)]">Your Order</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           {cartItems.length > 0 ? (
@@ -161,23 +161,23 @@ const { appId } = useContext(AppIdContext);
 
               if (deal) {
                 return (
-                  <div key={groupKey} className="border-b border-gray-300 pb-4">
+                  <div key={groupKey} className="border-b border-[var(--color-card-border)] pb-4">
                     <div className="flex justify-between items-center">
-                      <p className="font-medium text-gray-900">{deal.name}</p>
+                      <p className="font-medium text-[var(--color-light)]">{deal.name}</p>
                       <div className="flex items-center gap-2">
-                        <p className="text-accent font-semibold text-sm">
+                        <p className="text-[var(--color-accent)] font-semibold text-sm">
                           £{(deal.price * deal.quantity).toFixed(2)}
                         </p>
     <button
   onClick={() => removeDealFromCart(groupKey)}
-  className="text-gray-400 hover:text-accent transition"
+  className="text-[var(--color-muted)] hover:text-[var(--color-accent)] transition"
 >
   <X className="w-4 h-4" />
 </button>
 
                       </div>
                     </div>
-                    <ul className="mt-2 space-y-1 ml-4 text-sm text-gray-700">
+                   <ul className="mt-2 space-y-1 ml-4 text-sm text-[var(--color-muted)]">
                       {children.map((child, index) => (
                         <li key={child.cartLineId}>
                           {child.name}
@@ -198,11 +198,11 @@ const { appId } = useContext(AppIdContext);
                 return items.map((item) => (
                   <div
                     key={item.cartLineId}
-                    className="flex justify-between items-start border-b border-gray-200 pb-4 last:border-none"
+                    className="flex justify-between items-start border-b border-[var(--color-card-border)] pb-4 last:border-none"
                   >
                     <div className="flex-1">
-                      <p className="font-medium text-gray-900">{item.name}</p>
-                      <ul className="mt-1 text-sm text-gray-700 space-y-1">
+                      <p className="font-medium text-[var(--color-light)]">{item.name}</p>
+                      <ul className="mt-1 text-sm text-[var(--color-muted)] space-y-1">
                         {item.selectedSize && <li>Size: {typeof item.selectedSize === 'string' ? item.selectedSize : `${item.selectedSize}"`}</li>}
                         {item.variationName && <li>Variation: {item.variationName}</li>}
                         {Array.isArray(item.selectedAddons) && item.selectedAddons.length > 0 && (
@@ -211,16 +211,16 @@ const { appId } = useContext(AppIdContext);
                       </ul>
                       <div className="mt-2 flex items-center gap-2">
                         <button
-                          className="w-7 h-7 border border-accent text-accent bg-white hover:bg-accent/10 rounded flex items-center justify-center transition-colors"
+                          className="w-7 h-7 border border-[var(--color-accent)] text-[var(--color-accent)] bg-[var(--color-card-bg)] hover:bg-[var(--color-card-border)] rounded flex items-center justify-center transition-colors"
                           onClick={() => decreaseQuantity(item.cartLineId)}
                         >
                           <Minus className="w-3 h-3" />
                         </button>
-                        <span className="text-sm w-6 text-center text-gray-900 font-semibold">
+                        <span className="text-sm w-6 text-center text-[var(--color-light)] font-semibold">
                           {item.quantity}
                         </span>
                         <button
-                          className="w-7 h-7 border border-accent text-accent bg-white hover:bg-accent/10 rounded flex items-center justify-center transition-colors"
+                          className="w-7 h-7 border border-[var(--color-accent)] text-[var(--color-accent)] bg-[var(--color-card-bg)] hover:bg-[var(--color-card-border)] rounded flex items-center justify-center transition-colors"
                           onClick={() => increaseQuantity(item.cartLineId)}
                         >
                           <Plus className="w-3 h-3" />
@@ -228,12 +228,12 @@ const { appId } = useContext(AppIdContext);
                       </div>
                     </div>
                     <div className="flex items-center gap-4 pt-1">
-                      <p className="text-accent font-semibold text-sm">
+                      <p className="text-[var(--color-accent)] font-semibold text-sm">
                         £{(item.price * item.quantity).toFixed(2)}
                       </p>
                       <button
                         onClick={() => removeFromCart(item.cartLineId)}
-                        className="text-gray-400 hover:text-accent transition"
+                        className="text-[var(--color-muted)] hover:text-[var(--color-accent)] transition"
                       >
                         <X className="w-4 h-4" />
                       </button>
@@ -243,40 +243,40 @@ const { appId } = useContext(AppIdContext);
               }
             })
           ) : (
-            <p className="text-gray-500">Your cart is empty.</p>
+            <p className="text-[var(--color-muted)]">Your cart is empty.</p>
           )}
 
-          <hr className="my-4" />
+          <hr className="my-4 border-[var(--color-card-border)]" />
 
           <div className="flex justify-between">
-            <span className="text-gray-600">Subtotal</span>
-            <span className="font-medium">£{totalPrice.toFixed(2)}</span>
+            <span className="text-[var(--color-muted)]">Subtotal</span>
+            <span className="font-medium text-[var(--color-light)]">£{totalPrice.toFixed(2)}</span>
           </div>
 
          <div className="flex justify-between">
-  <span className="text-gray-600">Service Fee</span>
-  <span className="font-medium">£{serviceFee.toFixed(2)}</span>
+  <span className="text-[var(--color-muted)]">Service Fee</span>
+  <span className="font-medium text-[var(--color-light)]">£{serviceFee.toFixed(2)}</span>
 </div>
 
 
           {/* <div className="flex justify-between">
-            <span className="text-gray-600">Delivery Fee</span>
-            <span className="font-medium italic text-gray-500">
+            <span className="text-[var(--color-muted)]">Delivery Fee</span>
+            <span className="font-medium italic text-[var(--color-muted)]">
               To be calculated
             </span>
           </div> */}
 
-          <hr className="my-4" />
+          <hr className="my-4 border-[var(--color-card-border)]" />
 
      <div className="flex justify-between text-lg font-bold">
-  <span>Total</span>
-  <span>£{(totalPrice + serviceFee).toFixed(2)}</span>
+  <span className="text-[var(--color-light)]">Total</span>
+  <span className="text-[var(--color-light)]">£{(totalPrice + serviceFee).toFixed(2)}</span>
 </div>
 
 
           <Button
             size="lg"
-            className="w-full !bg-accent !text-white !hover:bg-secondary hidden lg:block"
+            className="w-full !bg-[var(--color-accent)] !text-white !hover:bg-[var(--color-secondary)] hidden lg:block"
             onClick={handleCheckout}
             disabled={cartItems.length === 0 || !isValid}
           >
@@ -285,10 +285,10 @@ const { appId } = useContext(AppIdContext);
         </CardContent>
       </Card>
 
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-[var(--color-card-bg)] border-t border-gray-200 shadow-md lg:hidden">
+      <div className="fixed bottom-0 left-0 right-0 p-4 bg-[var(--color-card-bg)] border-t border-[var(--color-card-border)] shadow-md lg:hidden">
         <Button
           size="lg"
-          className="w-full !bg-accent !text-white !hover:bg-secondary"
+          className="w-full !bg-[var(--color-accent)] !text-white !hover:bg-[var(--color-secondary)]"
           onClick={handleCheckout}
           disabled={cartItems.length === 0 || !isValid}
         >

@@ -236,33 +236,36 @@ const labelWithUpcharge = (it) => {
         className="bg-[var(--color-card-bg)] border border-[var(--color-card-border)] w-full h-full md:h-auto md:max-w-[640px] md:max-h-[90vh] md:rounded-lg rounded-none shadow-xl overflow-hidden flex flex-col"
       >
         <div className="flex-1 overflow-y-auto">
-          <div className="relative w-full h-72 md:h-96 overflow-hidden bg-[var(--color-card-bg)]">
-            {(!mealItem.image_url || imgError) ? (
-              <Image
-                src="https://cdn.grubify.co.uk/popularpizza/utensil.webp"
-                alt="Fallback"
-                fill
-                className="object-contain p-6 grayscale opacity-50"
-                unoptimized
-              />
-            ) : (
-              <Image
-                src={mealItem.image_url}
-                alt={mealItem.name}
-                fill
-                sizes="(max-width: 768px) 100vw, 640px"
-                className="object-cover"
-                onError={() => setImgError(true)}
-                unoptimized
-              />
-            )}
-          </div>
+<div className="relative w-full h-72 md:h-96 overflow-hidden bg-[var(--color-card-bg)] flex items-center justify-center">
+  {(!mealItem.image_url || imgError) ? (
+    <span
+      className="material-icons"
+      style={{
+        color: "var(--color-muted)",
+        opacity: 0.6,
+        fontSize: "7rem",
+        lineHeight: 1,
+      }}
+    >
+      restaurant
+    </span>
+  ) : (
+    <Image
+      src={mealItem.image_url}
+      alt={mealItem.name}
+      fill
+      className="object-cover"
+      onError={() => setImgError(true)}
+      unoptimized
+    />
+  )}
+</div>
 
           <div className="p-6">
-            <h1 className="text-xl font-bold text-gray-900">{mealItem.name}</h1>
-            <p className="mt-2 text-lg font-semibold text-gray-900">£{totalEach}</p>
+             <h1 className="text-xl font-bold text-[var(--color-light)]">{mealItem.name}</h1>
+            <p className="mt-2 text-lg font-semibold text-[var(--color-accent)]">£{totalEach}</p>
             {mealItem.description && (
-              <p className="mt-4 text-sm text-gray-700 whitespace-pre-line">
+              <p className="mt-4 text-sm text-[var(--color-muted)]">
                 {mealItem.description}
               </p>
             )}
@@ -274,9 +277,9 @@ const labelWithUpcharge = (it) => {
                     type="checkbox"
                     checked={isMeal}
                     onChange={(e) => setIsMeal(e.target.checked)}
-                    className="accent-accent w-5 h-5 border-gray-300 rounded"
+                    className="accent-[var(--color-accent)] w-5 h-5 border-[var(--color-card-border)] rounded"
                   />
-                  <span>Make it a meal (+£{mealDelta.toFixed(2)})</span>
+                  <span className="text-[var(--color-light)]">Make it a meal (+£{mealDelta.toFixed(2)})</span>
                 </label>
               </div>
             )}
@@ -290,11 +293,11 @@ const labelWithUpcharge = (it) => {
 
               return (
                 <div key={req.key} className="mt-8">
-                  <h4 className="text-sm font-semibold text-gray-700 mb-2">
+                  <h4 className="text-sm font-semibold text-[var(--color-light)] mb-2">
                     {req.displayName}
                   </h4>
                   {matchingItems.length === 1 ? (
-                    <p className="text-sm text-gray-700 mb-4"> {labelWithUpcharge(matchingItems[0])}</p>
+                    <p className="text-sm text-[var(--color-light)] mb-4"> {labelWithUpcharge(matchingItems[0])}</p>
                   ) : (
                     <div className="mb-4">
                       <select
@@ -302,7 +305,7 @@ const labelWithUpcharge = (it) => {
                         onChange={(e) =>
                           handleItemChange(req.key, "selectedItemId", Number(e.target.value))
                         }
-                        className="w-full border rounded px-3 py-2 text-sm"
+                        className="w-full border rounded px-3 py-2 text-sm text-[var(--color-muted)]"
                       >
                         <option value="">Select {req.name}</option>
                         {matchingItems.map((item) => (
@@ -326,18 +329,18 @@ const labelWithUpcharge = (it) => {
                 <Button
                   size="icon"
                   variant="outline"
-                  className="w-8 h-8 p-0 bg-gray-100 hover:bg-gray-200 text-gray-900 border border-gray-300"
+                  className="w-8 h-8 p-0 bg-[var(--color-card-bg)] hover:bg-[var(--color-card-border)] text-[var(--color-light)] border border-[var(--color-card-border)]"
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
                 >
                   −
                 </Button>
-                <span className="text-base font-semibold w-6 text-center text-gray-900">
+                <span className="text-base font-semibold w-6 text-center text-[var(--color-light)]">
                   {quantity}
                 </span>
                 <Button
                   size="icon"
                   variant="outline"
-                  className="w-8 h-8 p-0 bg-gray-100 hover:bg-gray-200 text-gray-900 border border-gray-300"
+                  className="w-8 h-8 p-0 bg-[var(--color-card-bg)] hover:bg-[var(--color-card-border)] text-[var(--color-light)] border border-[var(--color-card-border)]"
                   onClick={() => setQuantity(quantity + 1)}
                 >
                   +
@@ -351,13 +354,13 @@ const labelWithUpcharge = (it) => {
           <div className="flex items-center justify-between bg-[var(--color-card-bg)] backdrop-blur border-t px-4 py-3">
             <button
               onClick={onClose}
-              className="text-accent hover:text-secondary text-xl font-bold px-3 py-1 rounded-md bg-gray-100 hover:bg-gray-200 transition"
+              className="text-[var(--color-accent)] hover:text-[var(--color-secondary)] text-xl font-bold px-3 py-1 rounded-md bg-[var(--color-card-bg)] hover:bg-[var(--color-card-border)] transition"
             >
               ×
             </button>
             <Button
               onClick={handleAddToCart}
-              className="bg-accent hover:bg-secondary text-white font-semibold flex-grow ml-4 py-3 rounded transition text-base"
+              className="bg-[var(--color-accent)] hover:bg-[var(--color-secondary)] text-white font-semibold flex-grow ml-4 py-3 rounded transition text-base"
             >
               Add to Order £{totalEach}
             </Button>

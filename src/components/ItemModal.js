@@ -128,16 +128,19 @@ addToCart({
         <div className="flex-1 overflow-y-auto">
           {/* Hero Image */}
   {/* Hero Image with Fallback */}
-<div className="relative w-full h-72 md:h-96 overflow-hidden bg-[var(--color-card-bg)]">
+<div className="relative w-full h-72 md:h-96 overflow-hidden bg-[var(--color-card-bg)] flex items-center justify-center">
   {(!item.image_url || imgError) ? (
-    <Image
-      src="https://cdn.grubify.co.uk/popularpizza/utensil.webp"
-      alt="Fallback image"
-      fill
-      className="object-contain p-6 grayscale opacity-50"
-      unoptimized
-      
-    />
+    <span
+      className="material-icons"
+      style={{
+        color: "var(--color-muted)",
+        opacity: 0.6,
+        fontSize: "7rem",
+        lineHeight: 1,
+      }}
+    >
+      restaurant
+    </span>
   ) : (
     <Image
       src={item.image_url}
@@ -151,56 +154,51 @@ addToCart({
 </div>
 
 
+
           {/* Content */}
           <div className="p-6">
-            <h1 className="text-xl font-bold text-gray-900">
-              {item.name}
-            </h1>
+       <h1 className="text-xl font-bold text-[var(--color-light)]">{item.name}</h1>
 
             {item.price && (
-              <p className="mt-2 text-lg font-semibold text-gray-900">
-                £{Number(item.price).toFixed(2)}
-              </p>
+        <p className="mt-2 text-lg font-semibold text-[var(--color-accent)]">£{Number(item.price).toFixed(2)}</p>
             )}
 
             {item.description && (
-              <p className="mt-4 text-sm text-gray-700">
-                {item.description}
-              </p>
+          <p className="mt-4 text-sm text-[var(--color-muted)]">{item.description}</p>
             )}
 
             {/* Quantity Controls */}
             <div className="mt-6 flex justify-start">
-              <div className="flex items-center gap-2">
-                <Button
-                  size="icon"
-                  variant="outline"
-                  className="w-8 h-8 p-0 bg-gray-100 hover:bg-gray-200 text-gray-900 border border-gray-300"
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                >
-                  −
-                </Button>
-                <span className="text-base font-semibold w-6 text-center text-gray-900">
-                  {quantity}
-                </span>
-                <Button
-                  size="icon"
-                  variant="outline"
-                  className="w-8 h-8 p-0 bg-gray-100 hover:bg-gray-200 text-gray-900 border border-gray-300"
-                  onClick={() => setQuantity(quantity + 1)}
-                >
-                  +
-                </Button>
-              </div>
+     <div className="flex items-center gap-2 mt-6">
+  <Button
+    size="icon"
+    variant="outline"
+     className="w-8 h-8 p-0 bg-[var(--color-card-bg)] border border-[var(--color-card-border)] text-[var(--color-light)] hover:bg-[var(--color-card-border)]"
+    onClick={() => setQuantity(Math.max(1, quantity - 1))}
+  >
+    −
+  </Button>
+  <span className="text-base font-semibold w-6 text-center text-[var(--color-light)]">
+    {quantity}
+  </span>
+  <Button
+    size="icon"
+    variant="outline"
+     className="w-8 h-8 p-0 bg-[var(--color-card-bg)] border border-[var(--color-card-border)] text-[var(--color-light)] hover:bg-[var(--color-card-border)]"
+    onClick={() => setQuantity(quantity + 1)}
+  >
+    +
+  </Button>
+</div>
             </div>
 
             {/* Sizes */}
             {item.sizes && (
               <div className="mt-8">
-                <h4 className="text-sm font-semibold text-gray-700 mb-2">
+               <h4 className="text-sm font-semibold text-[var(--color-light)] mb-2">
                   Choose Size
                 </h4>
-                <div className="divide-y divide-gray-200 border rounded">
+                <div className="divide-y divide-[var(--color-card-border)] border rounded">
                   {Object.keys(item.sizes).map((size) => (
                     <label
                       key={size}
@@ -215,11 +213,9 @@ addToCart({
                           onChange={() => setSelectedSize(size)}
                           className="accent-accent w-5 h-5 border-gray-300 rounded"
                         />
-                        <span className="text-gray-900">
-                          {size}”
-                        </span>
+                         <span className="text-[var(--color-light)]">{size}”</span>
                       </div>
-                      <span className="text-gray-500 text-sm">
+                      <span className="text-[var(--color-muted)] text-sm">
                         £{item.sizes?.[size].toFixed(2)}
                       </span>
                     </label>
@@ -234,7 +230,7 @@ addToCart({
                 <h4 className="text-sm font-semibold text-gray-700 mb-2">
                   Choose Variation
                 </h4>
-                <div className="divide-y divide-gray-200 border rounded">
+             <div className="divide-y divide-[var(--color-card-border)] border border-[var(--color-card-border)] rounded">
                   {Object.keys(item.variation).map((key) => {
                     const variationData = item.variation[key];
                     let price = 0;
@@ -259,7 +255,7 @@ addToCart({
                             value={key}
                             checked={selectedVariation === key}
                             onChange={() => setSelectedVariation(key)}
-                            className="accent-accent w-5 h-5 border-gray-300 rounded"
+                            className="accent-[var(--color-accent)] w-5 h-5 border-[var(--color-card-border)] rounded"
                           />
                           <span className="text-gray-900">
                             {variationData.name}
@@ -281,7 +277,7 @@ addToCart({
                 <h4 className="text-sm font-semibold text-gray-700 mb-2">
                   Add-ons
                 </h4>
-                <div className="divide-y divide-gray-200 border rounded">
+                <div className="divide-y divide-[var(--color-card-border)] border rounded">
                   {Object.keys(item.addons).map((addonName) => {
                     const addonData = item.addons[addonName];
                     let price;
@@ -322,16 +318,15 @@ addToCart({
         {/* Floating Footer */}
         <div className="sticky bottom-0 w-full">
           <div className="flex items-center justify-between bg-[var(--color-card-bg)] backdrop-blur border-t px-4 py-3">
-            <button
-              onClick={onClose}
-              className="text-accent hover:text-secondary text-xl font-bold px-3 py-1 rounded-md bg-gray-100 hover:bg-gray-200 transition"
-            >
-              ×
-            </button>
+    <button
+  onClick={onClose}
+    className="text-[var(--color-accent)] hover:text-[var(--color-secondary)] text-xl font-bold px-3 py-1 rounded-md bg-[var(--color-card-bg)] hover:bg-[var(--color-card-border)] transition">
+  ×
+</button>
 <Button
   onClick={handleAdd}
   disabled={item.variation && Object.keys(item.variation).length > 0 && !selectedVariation}
-  className="bg-accent hover:bg-secondary text-white font-semibold flex-grow ml-4 py-3 rounded transition text-base disabled:opacity-50 disabled:cursor-not-allowed"
+ className="bg-[var(--color-accent)] hover:bg-[var(--color-secondary)] text-white font-semibold flex-grow ml-4 py-3 rounded transition text-base disabled:opacity-50 disabled:cursor-not-allowed"
 >
   Add to order £{totalPrice}
 </Button>

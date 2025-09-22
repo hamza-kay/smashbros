@@ -19,14 +19,14 @@ export default function CompletePage() {
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen px-4 py-10 text-center">
-      <h1 className="text-accent text-2xl font-bold mb-3">
+      <h1 className="text-[var(--color-accent)] text-2xl font-bold mb-3">
         ✅ Order Complete
       </h1>
-      <p className="text-gray-700">We’ll start preparing it shortly.</p>
-      <p className="text-muted text-sm mt-4">Redirecting to home…</p>
+      <p className="text-[var(--color-light)]">We’ll start preparing it shortly.</p>
+      <p className="text-[var(--color-muted)] text-sm mt-4">Redirecting to home…</p>
   <Button
   onClick={() => router.push("/")}
-  className="mt-6 bg-accent text-white hover:bg-secondary px-6"
+  className="mt-6 bg-[var(--color-accent)] text-white hover:bg-[var(--color-secondary)] px-6"
 >
   Back to Home
 </Button>

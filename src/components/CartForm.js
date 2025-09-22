@@ -39,47 +39,51 @@ export default function CartForm() {
   return (
     <Card className="bg-[var(--color-card-bg)] border border-[var(--color-card-border)]">
       <CardHeader>
-        <CardTitle>Personal Details</CardTitle>
+        <CardTitle className="text-[var(--color-light)]">Personal Details</CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <Input placeholder="First Name" {...register("firstName")} />
+            <Input placeholder="First Name" {...register("firstName")} 
+            className="bg-[var(--color-card-bg)] border border-[var(--color-card-border)] text-[var(--color-light)] placeholder:text-[var(--color-muted)] focus:border-[var(--color-accent)] focus:ring-[var(--color-accent)]"/>
             <div className="h-5">
               {errors.firstName && (
-                <p className="text-sm text-accent">{errors.firstName.message}</p>
+                <p className="text-sm text-[var(--color-accent)]">{errors.firstName.message}</p>
               )}
             </div>
           </div>
           <div>
-            <Input placeholder="Last Name" {...register("lastName")} />
+            <Input placeholder="Last Name" {...register("lastName")} 
+            className="bg-[var(--color-card-bg)] border border-[var(--color-card-border)] text-[var(--color-light)] placeholder:text-[var(--color-muted)] focus:border-[var(--color-accent)] focus:ring-[var(--color-accent)]"/>
             <div className="h-5">
               {errors.lastName && (
-                <p className="text-sm text-accent">{errors.lastName.message}</p>
+                <p className="text-sm text-[var(--color-accent)]">{errors.lastName.message}</p>
               )}
             </div>
           </div>
         </div>
 
         <div>
-          <Input placeholder="Email Address" {...register("email")} />
+          <Input placeholder="Email Address" {...register("email")}
+          className="bg-[var(--color-card-bg)] border border-[var(--color-card-border)] text-[var(--color-light)] placeholder:text-[var(--color-muted)] focus:border-[var(--color-accent)] focus:ring-[var(--color-accent)]" />
           <div className="h-5">
             {errors.email && (
-              <p className="text-sm text-accent">{errors.email.message}</p>
+              <p className="text-sm text-[var(--color-accent)]">{errors.email.message}</p>
             )}
           </div>
         </div>
 
         <div>
-          <Input placeholder="Phone Number" {...register("phoneNumber")} />
+          <Input placeholder="Phone Number" {...register("phoneNumber")} 
+          className="bg-[var(--color-card-bg)] border border-[var(--color-card-border)] text-[var(--color-light)] placeholder:text-[var(--color-muted)] focus:border-[var(--color-accent)] focus:ring-[var(--color-accent)]"/>
           <div className="h-5">
             {errors.phoneNumber && (
-              <p className="text-sm text-accent">{errors.phoneNumber.message}</p>
+              <p className="text-sm text-[var(--color-accent)]">{errors.phoneNumber.message}</p>
             )}
           </div>
         </div>
 
-        <CardTitle className="mt-8">Pickup Details</CardTitle>
+        <CardTitle className="mt-8 text-[var(--color-light)]">Pickup Details</CardTitle>
 
         <div className="flex gap-2 mt-2">
           {/* <Button
@@ -97,10 +101,10 @@ export default function CartForm() {
           </Button> */}
           <Button
             className={clsx(
-              "flex items-center gap-2 px-4 py-2 rounded text-sm font-medium border border-accent transition-colors",
+              "flex items-center gap-2 px-4 py-2 rounded text-sm font-medium border border-[var(--color-accent)] transition-colors",
               fulfillmentType === "PICKUP"
-                ? "bg-accent text-white hover:bg-secondary"
-                : "bg-white text-accent hover:bg-accent/10"
+                ? "bg-[var(--color-accent)] text-white hover:bg-[var(--color-secondary)]"
+                : "bg-[var(--color-card-bg)] text-[var(--color-accent)] hover:bg-[var(--color-card-border)]"
             )}
             type="button"
             onClick={() => setValue("fulfillmentType", "PICKUP")}
@@ -124,9 +128,9 @@ export default function CartForm() {
           )}
         </div> */}
 
-        <div className="text-sm text-gray-700 flex items-center gap-2 mt-2">
-<Store className="w-4 h-4 text-gray-500" />
-Estimated pickup: <span className="font-medium">30 min</span>
+        <div className="text-sm text-[var(--color-muted)] flex items-center gap-2 mt-2">
+<Store className="w-4 h-4 text-[var(--color-muted)]" />
+Estimated pickup: <span className="font-medium text-[var(--color-accent)]">30 min</span>
 </div>
 
         <div
@@ -138,10 +142,11 @@ Estimated pickup: <span className="font-medium">30 min</span>
           )}
         >
           <div>
-            <Input placeholder="Street Address" {...register("deliveryAddress")} />
+            <Input placeholder="Street Address" {...register("deliveryAddress")}
+            className="bg-[var(--color-card-bg)] border border-[var(--color-card-border)] text-[var(--color-light)] placeholder:text-[var(--color-muted)] focus:border-[var(--color-accent)] focus:ring-[var(--color-accent)]" />
             <div className="h-5">
               {errors.deliveryAddress && (
-                <p className="text-sm text-accent">{errors.deliveryAddress.message}</p>
+                <p className="text-sm text-[var(--color-accent)]">{errors.deliveryAddress.message}</p>
               )}
             </div>
           </div>
@@ -150,24 +155,27 @@ Estimated pickup: <span className="font-medium">30 min</span>
             <Input
               placeholder="Apartment or building name (optional)"
               {...register("apartment")}
+              className="bg-[var(--color-card-bg)] border border-[var(--color-card-border)] text-[var(--color-light)] placeholder:text-[var(--color-muted)] focus:border-[var(--color-accent)] focus:ring-[var(--color-accent)]"
             />
             <div className="h-5" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <Input placeholder="Postcode" {...register("postcode")} />
+              <Input placeholder="Postcode" {...register("postcode")}
+              className="bg-[var(--color-card-bg)] border border-[var(--color-card-border)] text-[var(--color-light)] placeholder:text-[var(--color-muted)] focus:border-[var(--color-accent)] focus:ring-[var(--color-accent)]" />
               <div className="h-5">
                 {errors.postcode && (
-                  <p className="text-sm text-accent">{errors.postcode.message}</p>
+                  <p className="text-sm text-[var(--color-accent)]">{errors.postcode.message}</p>
                 )}
               </div>
             </div>
             <div>
-              <Input placeholder="City" {...register("city")} />
+              <Input placeholder="City" {...register("city")} 
+              className="bg-[var(--color-card-bg)] border border-[var(--color-card-border)] text-[var(--color-light)] placeholder:text-[var(--color-muted)] focus:border-[var(--color-accent)] focus:ring-[var(--color-accent)]"/>
               <div className="h-5">
                 {errors.city && (
-                  <p className="text-sm text-accent">{errors.city.message}</p>
+                  <p className="text-sm text-[var(--color-accent)]">{errors.city.message}</p>
                 )}
               </div>
             </div>
@@ -175,7 +183,8 @@ Estimated pickup: <span className="font-medium">30 min</span>
         </div>
 
         <div>
-          <Input placeholder="Additional notes (optional)" {...register("notes")} />
+          <Input placeholder="Additional notes (optional)" {...register("notes")} 
+          className="bg-[var(--color-card-bg)] border border-[var(--color-card-border)] text-[var(--color-light)] placeholder:text-[var(--color-muted)] focus:border-[var(--color-accent)] focus:ring-[var(--color-accent)]"/>
           <div className="h-5" />
         </div>
       </CardContent>

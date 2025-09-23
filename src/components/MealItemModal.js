@@ -188,7 +188,7 @@ customPrice += Number(selectedItem.mealUpcharge || 0);
           id: selectedItem.id,
           name: selectedItem.name,
           price: customPrice,
-          quantity: 1,
+          quantity,
           selectedVariation: variationKey,
           variationName,
           selectedAddons: selection.selectedAddons,

@@ -22,14 +22,20 @@
   /* --color-destructive: #0C5AA4;  */
 
  
-  /* Speedo branding with Grill & Destroy mappings */
-  --color-accent:         #E74C3C;   /* From: primary */
+  /* smashbros branding */
+  /* --color-accent:         #E74C3C;   From: red primary */
+  --color-accent:         #F1C40F;   /* From: yellow primary */
   --color-secondary:      #C6C8CE;   /* This wasn't directly in the HTML config, so kept your subtle light gray for muted/inactive nav */
-  --color-highlight:      #E74C3C;   /* Same as accent (primary red) */
+  /* --color-highlight:      #E74C3C;   Same as accent (primary red) */
+  --color-highlight:      #F1C40F;   /* Same as accent (primary yellow) */
+  
+  
   --color-muted:          #A6A8AD;   /* text-dark-secondary */
-  --color-background:     #17181A;   /* background-dark */
+  /* --color-background:     #17181A;   background-dark */
+   --color-background:     #141415;   /* background-dark */
   --color-light:          #FDFEFE;   /* background-light */
-  --color-destructive:    #E74C3C;   /* same as accent/primary */
+  /* --color-destructive:    #E74C3C;   same as accent/primary */
+  --color-destructive:    #C6C8CE;   /* yellow same as accent/primary */
   --color-card-bg:        #2C2D2F;   /* surface-dark */
   --color-card-border:    #232425;   /* closest match: slightly lighter border than card */
   --color-inactive:       #A6A8AD;   /* text-dark-secondary */
@@ -57,8 +63,8 @@ html, body {
   font-family: var(--font-inter);
   font-size: 16px;
   color: #333;
-    background: var(--color-background); /* Softer, creamier than stark white */
-   /* background-image: url('/broken-noise.png'); */
+   background: var(--color-background); 
+   background-image: url('/solid.png');
    
   min-height: 100%;
   scroll-behavior: smooth !important;

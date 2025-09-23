@@ -57,18 +57,20 @@ export default function Header({ sections, restaurant }) {
 </Link> */}
 
       <div className="hidden md:flex items-center gap-4">
+         <Link href="/cart"> 
         <Button
           variant="default"
           size="sm"
-    className="hidden md:inline-flex bg-accent hover:bg-secondary text-white"
+    className="hidden md:inline-flex bg-accent hover:bg-secondary text-[var(--color-light)]"
 >
           Order Now
         </Button>
-     <User className="w-5 h-5 text-white" />
+        </Link>
+     <User className="w-5 h-5 text-[var(--color-light)]" />
         <Link href="/cart" className="relative">
-         <ShoppingCart className="w-5 h-5 text-white" />
+         <ShoppingCart className="w-5 h-5 text-[var(--color-light)]" />
           {groupedCount > 0 && (
-            <span className="absolute -top-2 -right-2 bg-accent text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+            <span className="absolute -top-2 -right-2 bg-accent text-[var(--color-light)] text-xs w-5 h-5 flex items-center justify-center rounded-full">
               {groupedCount}
               
             </span>

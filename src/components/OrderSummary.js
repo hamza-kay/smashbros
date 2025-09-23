@@ -163,7 +163,11 @@ const { appId } = useContext(AppIdContext);
                 return (
                   <div key={groupKey} className="border-b border-[var(--color-card-border)] pb-4">
                     <div className="flex justify-between items-center">
-                      <p className="font-medium text-[var(--color-light)]">{deal.name}</p>
+                   
+                      <p className="font-medium text-[var(--color-light)]">
+  {deal.name}
+  {deal.quantity > 1 && <span className="text-gray-500 ml-2">x{deal.quantity}</span>}
+</p>
                       <div className="flex items-center gap-2">
                         <p className="text-[var(--color-accent)] font-semibold text-sm">
                           £{(deal.price * deal.quantity).toFixed(2)}
@@ -186,9 +190,9 @@ const { appId } = useContext(AppIdContext);
                           {Array.isArray(child.selectedAddons) && child.selectedAddons.length > 0 && (
                             <> - {child.selectedAddons.join(", ")}</>
                           )}
-                          {(Number(child?.price) || 0) * (Number(child?.quantity) || 1) > 0 && (
-  <> - £{((Number(child?.price) || 0) * (Number(child?.quantity) || 1)).toFixed(2)}</>
-)}
+      {(Number(child?.price) || 0) > 0 && (
+        <> - £{Number(child?.price).toFixed(2)}</>
+      )}
                         </li>
                       ))}
                     </ul>

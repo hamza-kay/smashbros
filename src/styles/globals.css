@@ -33,6 +33,7 @@
   --color-card-bg:        #2C2D2F;   /* surface-dark */
   --color-card-border:    #232425;   /* closest match: slightly lighter border than card */
   --color-inactive:       #A6A8AD;   /* text-dark-secondary */
+  --color-skeleton: #232425;
 
   
 

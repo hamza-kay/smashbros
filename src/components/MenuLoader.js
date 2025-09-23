@@ -56,7 +56,7 @@ if (isLoadingRestaurant || isLoadingSectionItems) {
           {Array.from({ length: 6 }).map((_, idx) => (
             <div
               key={idx}
-              className="h-64 bg-gray-100 animate-pulse rounded"
+              className="h-64 bg-[var(--color-card-border)] animate-pulse rounded"
             />
           ))}
         </div>
@@ -75,7 +75,7 @@ if (isLoadingRestaurant || isLoadingSectionItems) {
         </p>
         <button
           onClick={() => window.location.reload()}
-          className="bg-blue-600 text-white px-4 py-2 rounded"
+          className="bg-blue-600 text-[var(--color-light)] px-4 py-2 rounded"
         >
           Retry
         </button>

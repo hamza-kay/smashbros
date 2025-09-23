@@ -276,7 +276,7 @@ const { appId } = useContext(AppIdContext);
 
           <Button
             size="lg"
-            className="w-full !bg-[var(--color-accent)] !text-white !hover:bg-[var(--color-secondary)] hidden lg:block"
+            className="w-full !bg-[var(--color-accent)] !text-[var(--color-light)] !hover:bg-[var(--color-secondary)] hidden lg:block"
             onClick={handleCheckout}
             disabled={cartItems.length === 0 || !isValid}
           >
@@ -288,7 +288,7 @@ const { appId } = useContext(AppIdContext);
       <div className="fixed bottom-0 left-0 right-0 p-4 bg-[var(--color-card-bg)] border-t border-[var(--color-card-border)] shadow-md lg:hidden">
         <Button
           size="lg"
-          className="w-full !bg-[var(--color-accent)] !text-white !hover:bg-[var(--color-secondary)]"
+          className="w-full !bg-[var(--color-accent)] !text-[var(--color-light)] !hover:bg-[var(--color-secondary)]"
           onClick={handleCheckout}
           disabled={cartItems.length === 0 || !isValid}
         >

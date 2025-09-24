@@ -166,7 +166,7 @@ const { appId } = useContext(AppIdContext);
                    
                       <p className="font-medium text-[var(--color-light)]">
   {deal.name}
-  {deal.quantity > 1 && <span className="text-gray-500 ml-2">x{deal.quantity}</span>}
+  {deal.quantity > 1 && <span className="text-[var(--color-accent)] ml-2">x{deal.quantity}</span>}
 </p>
                       <div className="flex items-center gap-2">
                         <p className="text-[var(--color-accent)] font-semibold text-sm">
